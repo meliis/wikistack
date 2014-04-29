@@ -10,3 +10,23 @@ a {
 #page_control_panel {
   float:right;
 }
+
+
+#disambiguation_list li {
+  display: block;
+  padding: 14px;
+}
+
+#disambiguation_list li:hover {
+  background-color: #ddd;
+}
+
+#disambiguation_list .excerpt_title {
+  font: bold 20px arial,sans-serif;
+}
+
+#disambiguation_list .excerpt_text {
+  color: #555;
+  font: normal 14px arial,sans-serif;
+}
+

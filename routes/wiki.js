@@ -34,13 +34,26 @@ router.post('/submit', function(req, res) {
   
 });
 
+router.get('/:url_name/:id', function(req, res) {
+  var url_name = req.params.url_name;
+  var id = req.params.id;
+  
+  models.Page.findById(id,function(err, doc) {
+    res.render('show_page', { page: doc });
+  });
+});
+
 router.get('/:url_name', function(req, res) {
   var url_name = req.params.url_name;
   var isupdated = req.query.updated;
   var updated = (isupdated === "true") ? true:false;
   
-  models.Page.find({url_name: url_name},function(err, docs) {
-    res.render('show_page', { page: docs[0], updated: updated });
+  models.Page.find({url_name: url_name},function(err, query_results) {
+    if (query_results.length > 1) {
+      res.render('disambiguation', { pages: query_results });
+    } else {
+      res.render('show_page', { page: query_results[0], updated: updated });
+    }
   });
 });
 

@@ -18,10 +18,16 @@ module.exports = function(swig) {
       sanitize: true
     });
   
-    return marked(page.body);
+    return marked(page);
   };
   marked.safe = true;
   swig.setFilter('marked', marked);
+  
+  var excerpt = function(page) {
+    var body_excerpt = page.body.substring(0,140);
+    return body_excerpt;
+  };
+  swig.setFilter('excerpt', excerpt);
   
 };
 

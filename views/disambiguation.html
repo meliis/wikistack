@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{pages[0].title}} (disambiguation)
+{% endblock %}
+
+{% block content %}
+    
+    {% for page in pages %}
+      <ul id="disambiguation_list">
+        <li>
+          <div class='excerpt_title'><a href="/wiki/{{page.url_name}}/{{page._id.toString()}}">{{page.title}}</a></div>
+          <div class='excerpt_text'>{{ page|excerpt|marked }}</div>
+        </li>
+      </ul>
+        
+    {% endfor %}
+    
+{% endblock %}
