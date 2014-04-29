@@ -1,0 +1,14 @@
+  <form {% if page %}action="/wiki/edit_submit/{{page._id.toString()}}"{% else%}action="/add/submit"{% endif%} method="POST">
+    
+    <div class='form-group'>
+      <br>
+      <h4>Page Title</h4>
+      <input type='text' id='title' name='title' class='form-control' {% if page%}value="{{page.title}}" {% endif%} >
+      <br><br>
+      <h4>Page Content</h4>
+      <textarea class='form-control' name='body' rows='20'>{% if page %}{{page.body}}{% endif %}</textarea>
+    </div>
+    <div class='form-group'>
+      <input type='submit' class='btn btn-primary'>
+    </div>
+  </form>

@@ -6,3 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
+
+#page_control_panel {
+  float:right;
+}

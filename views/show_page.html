@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {{ page.title }}
+{% endblock %}
+
+{% block headertop %}
+  <div id='page_control_panel'>
+    <a href="/wiki/delete/{{page._id.toString()}}" class='btn btn-danger'>Delete</a>
+    <a href="/wiki/edit/{{page._id.toString()}}" class='btn btn-info'>Edit</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  {% if updated %}
+      <div class='alert alert-success'>Page did not update. Just kidding, it did.</div>
+  {% endif %}
+
+
+  {{ page|marked }}  
+
+{% endblock %}

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var models = require('../models/');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -7,7 +8,6 @@ router.get('/', function(req, res) {
 });
  
 router.post('/submit', function(req, res) {
-  var models = require('../models/');
   
   var title = req.body.title;
   var body = req.body.body;
@@ -31,6 +31,45 @@ router.post('/submit', function(req, res) {
   var p = new models.Page({ "title": title, "body":body, "url_name": url_name});
   p.save();
   res.redirect('/');
+  
+});
+
+router.get('/:url_name', function(req, res) {
+  var url_name = req.params.url_name;
+  var isupdated = req.query.updated;
+  var updated = (isupdated === "true") ? true:false;
+  
+  models.Page.find({url_name: url_name},function(err, docs) {
+    res.render('show_page', { page: docs[0], updated: updated });
+  });
+});
+
+router.get("/edit/:id", function(req,res) {
+  var id = req.params.id;
+
+  models.Page.findById(id,function(err, doc) {
+    res.render('edit', { page: doc });
+  });
+  
+});
+
+router.post("/edit_submit/:id", function(req,res) {
+  var new_title = req.body.title;
+  var new_body = req.body.body;
+  var id = req.params.id;
+  
+  models.Page.findByIdAndUpdate(id, {title: new_title, body: new_body}, function(err, doc) {
+    res.redirect('/wiki/'+doc.url_name+"?updated=true");
+  });
+  
+  
+});
+
+router.get("/delete/:id", function(req,res) {
+  var id = req.params.id;
+  models.Page.findByIdAndRemove(id, function(err, data) {
+    res.redirect("/?deleted=true");
+  });
   
 });
 
