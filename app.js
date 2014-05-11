@@ -13,9 +13,12 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var routes = require('./routes/index');
+var home = require('./routes/home')
 var users = require('./routes/users');
 var add_routes = require('./routes/add');
 var wiki_routes = require('./routes/wiki');
+var login_routes = require('./routes/login');
+var signup_routes = require('./routes/signup');
 
 var app = express();
 app.engine('html', swig.renderFile);
@@ -39,8 +42,10 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-
 app.use('/', routes);
+app.use('/home', home);
+app.use('/login', login_routes);
+app.use('/signup', signup_routes);
 app.use('/users', users);
 app.use('/add', add_routes);
 app.use('/wiki', wiki_routes);
