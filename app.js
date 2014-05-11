@@ -1,5 +1,7 @@
 var express = require('express');
 var swig = require('swig');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 require('./filters')(swig);
 
@@ -8,6 +10,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -21,12 +24,21 @@ app.engine('html', swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
+//standard Express middlewares
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//required for passportJS
+
+app.use(session({ secret: 'ilovetong' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 
 app.use('/', routes);
 app.use('/users', users);

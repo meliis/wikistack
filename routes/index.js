@@ -19,3 +19,7 @@ router.get('/', function(req, res) {
 });
 
 module.exports = router;
+
+
+//Another addition is the public API for express Routers. A Router is like a mini express app. It contains no views or settings but does provide the typical routing APIs (.use, .get, .param, .route). Apps and Routers can also .use() other routers allowing you to create files that export a router to organize your apps better.
+
