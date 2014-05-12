@@ -4,7 +4,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 
 require('./filters')(swig);
-require('./config/passport')(passport);
+require('./config/passport')(passport); //passport object is passed from the server.js file to the config/passport.js file 
 
 var path = require('path');
 var favicon = require('static-favicon');
