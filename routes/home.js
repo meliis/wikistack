@@ -16,15 +16,9 @@ router.get('/', isLoggedIn, function(req, res) {
   }
   
   var docs = models.Page.find(function(err, docs) {
-    res.render('home', { docs: docs, deleted: deleted });
+    res.render('home', { docs: docs, deleted: deleted, user: req.user});
   });
 });
-
-router.get('/logout', function(req, res){
-  req.logout(); //this logout function is provided by passport
-  res.redirect('/'); 
-})
-
 
 //the isLoggedIn function i
 
@@ -33,9 +27,9 @@ function isLoggedIn(req, res, next){
   if (req.isAuthenticated()){
     return next();
   }
-  console.log('isLoggedIn function running')
-  next();
-  // res.redirect('/') //if not authenticated, redirect to main page
+  // console.log('isLoggedIn function running')
+  // next();
+  res.redirect('/') //if not authenticated, redirect to main page
 }
 
 module.exports = router;

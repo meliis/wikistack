@@ -8,3 +8,8 @@ router.get('/', function(req, res) {
 });
 
 module.exports = router;
+
+router.get('/logout', function(req, res){
+  req.logout(); //this logout function is provided by passport
+  res.redirect('/'); 
+})
