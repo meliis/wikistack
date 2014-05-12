@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-// var models = require('../models/');
+var passport = require('passport');
 
 //show the signup form
 router.get('/', function(req, res) {
@@ -8,6 +8,10 @@ router.get('/', function(req, res) {
   res.render('signup.html', {message: req.flash('signupMessage')});
 });
 
-//router.post('/', //do all our passport stuff here)
+router.post('/', passport.authenticate('local-signup', {
+    successRedirect : '/home', //where successful redirects get redirected. BUT THIS (/profile) DOESN'T EXIST YET 
+    failureRedirect : '/signup', //where failed authentication gets redirected
+    failureFlash : true
+}))
 
 module.exports = router;
