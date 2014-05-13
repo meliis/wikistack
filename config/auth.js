@@ -2,14 +2,14 @@
 
 
 //using environmental variables to store API keys
-var facebookId = process.env.facebookId;
+var facebookId = process.env.FACEBOOK_ID;
 
-var facebookSecret = process.env.facebookSecret
+var facebookSecret = process.env.FACEBOOK_SECRET;
 
 module.exports = {
     'facebookAuth' : {
-        'clientID'      : '1401480153470708', // your App ID
-        'clientSecret'  : '5e358cb73450edc8e15f32f68326550a', // your App Secret
+        'clientID'      : facebookID, // your App ID
+        'clientSecret'  : facebookSecret, // your App Secret
         'callbackURL'   : 'http://localhost:3000/auth/facebook/callback'
     },
 
