@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport')
 
 /* GET landing page. */
 
@@ -20,8 +21,12 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email'
 // handle the callback after facebook has authenticated the user
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
-    successRedirect : '/profile',
+    successRedirect : '/home',
     failureRedirect : '/'
   }));
 
+//what's with this 
 module.exports = {'router': router, 'passport': passport}
+
+//is this how you export the modules? 
+// module.exports = {'router': router, 'passport': passport}

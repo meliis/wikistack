@@ -13,7 +13,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var routes = require('./routes/index');
+var routes = require('./routes/index').router;
 var home = require('./routes/home')
 var users = require('./routes/users');
 var add_routes = require('./routes/add');
@@ -43,7 +43,7 @@ app.use(passport.initialize()); //creates our passport object
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-app.use('/', routes);
+app.use('/', routes); //this is throwing an error 
 app.use('/home', home);
 app.use('/login', login_routes);
 app.use('/signup', signup_routes);
