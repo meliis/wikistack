@@ -20,19 +20,11 @@ router.get('/', isLoggedIn, function(req, res) {
   });
 });
 
-//the isLoggedIn function i
-
-//note that we've written this function as a 
-function isLoggedIn(req, res, next){
+function isLoggedIn(req, res, next){ //note that this is a function declaration, NOT an expression. It loads before any code is called--compare this with a function expression. http://stackoverflow.com/questions/1013385/what-is-the-difference-between-a-function-expression-vs-declaration-in-javascrip
   if (req.isAuthenticated()){
     return next();
   }
-  // console.log('isLoggedIn function running')
-  // next();
   res.redirect('/') //if not authenticated, redirect to main page
 }
 
 module.exports = router;
-
-//Another addition is the public API for express Routers. A Router is like a mini express app. It contains no views or settings but does provide the typical routing APIs (.use, .get, .param, .route). Apps and Routers can also .use() other routers allowing you to create files that export a router to organize your apps better.
-

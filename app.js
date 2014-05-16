@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //required for passportJS
 
-app.use(session({ secret: 'ilovetong' })); // session secret
+app.use(session({ secret: 'ilovetong' })); // session secret, the salt used to encrypt the session ids which are stored in the client's browser. 
 app.use(passport.initialize()); //creates our passport object
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session

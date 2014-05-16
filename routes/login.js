@@ -4,7 +4,7 @@ var passport = require('passport');
 
 //show the login form
 router.get('/', function(req, res) {
-  //renders the page and passes in any flash data if it exists
+  //renders the page and passes in any flash message data (for potential errors) if it exists
   res.render('login', {message: req.flash('loginMessage')});
 });
 
