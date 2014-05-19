@@ -1,19 +1,15 @@
 var express = require('express');
 var swig = require('swig');
-var passport = require('passport');
-var flash = require('connect-flash');
 
 require('./filters')(swig);
-require('./config/passport')(passport); //passport object is passed from the server.js file to the config/passport.js file 
 
 var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
 
-var routes = require('./routes/index').router;
+var routes = require('./routes/index');
 var home = require('./routes/home')
 var users = require('./routes/users');
 var add_routes = require('./routes/add');
@@ -29,27 +25,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
 //standard Express middlewares
-app.use(favicon());
+app.use(favicon()); //logs requests to the console
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-//required for passportJS
-
-app.use(session({ secret: 'ilovetong' })); // session secret, the salt used to encrypt the session ids which are stored in the client's browser. 
-app.use(passport.initialize()); //creates our passport object
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
-
-app.use('/', routes); //this is throwing an error 
-app.use('/home', home);
-app.use('/login', login_routes);
-app.use('/signup', signup_routes);
-app.use('/users', users);
-app.use('/add', add_routes);
-app.use('/wiki', wiki_routes);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

@@ -14,19 +14,4 @@ router.get('/logout', function(req, res){
   res.redirect('/'); 
 })
 
-//FACEBOOK ROUTES
-//facebook authentication and login 
-router.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-
-// handle the callback after facebook has authenticated the user
-router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', {
-    successRedirect : '/home',
-    failureRedirect : '/'
-  }));
-
-//what's with this 
-module.exports = {'router': router, 'passport': passport}
-
-//is this how you export the modules? 
-// module.exports = {'router': router, 'passport': passport} wait why do you need to export the passport object? 
+module.exports = router;
