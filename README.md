@@ -14,7 +14,7 @@ We’ll be exploring how to implement **local** Passport.js authentication, whic
 We’ll start off by cloning a modified version of WikiStack. We’ve changed the structure a bit--formerly, the index.html page was the main page displaying a list of all the articles, and the index.js file in our routes directory specified the corresponding routes to the main page. Now, the index.html page is the login page--with index.js the corresponding login routes--and home.html is the main article list page. 
 
 {% terminal %}
-$ git clone //TONGS DIRECTORY 
+$ git clone https://github.com/FullstackAcademy/privatewikistack
 $ npm install 
 {% endterminal %}
 
