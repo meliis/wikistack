@@ -651,4 +651,4 @@ And we’re done! You should be able login locally and with Facebook, restrict a
 - Change the authentication structure of your Wikistack--allow all users to view articles, but only authenticated users to edit pages. 
 
 ##Acknowledgments 
-This workshop has used’d [Scotch.io’s authentication tutorial](http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local#application-setup-server.js) as a reference; many thanks to their team. Other citations sprinkled throughout. 
+This workshop has used [Scotch.io’s authentication tutorial](http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local#application-setup-server.js) as a reference; many thanks to their team. Other citations sprinkled throughout. 
