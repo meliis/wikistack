@@ -1,4 +1,4 @@
-#WORKSHOP TUTORIAL - ###learn.fullstackacademy.com 
+#WORKSHOP TUTORIAL - learn.fullstackacademy.com 
 
 ##AUTHENTICATED WIKISTACK 
 In this workshop, we’ll build a layer of authentication on our old friend, Wikistack. Along the way, we’ll learn more about local and provider authentication, middleware, session cookies, and security. 
