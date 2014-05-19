@@ -276,21 +276,23 @@ Finally, we need to incorporate that same isLoggedIn function within our `wiki.j
 
 ###Views
 
+###Views
+
 We need a landing page (index.html) with login, signup, and Facebook signup buttons. Try building one that looks like this: 
 
-<img src="http://i34.photobucket.com/albums/d147/Tong_Xiang/wiki-indexlandingpage_zps32a83fc4.png">
+<a href="http://s34.photobucket.com/user/Tong_Xiang/media/wiki-indexlandingpage_zps32a83fc4.png.html" target="_blank"><img src="http://i34.photobucket.com/albums/d147/Tong_Xiang/wiki-indexlandingpage_zps32a83fc4.png" border="0" alt="indexLanding photo wiki-indexlandingpage_zps32a83fc4.png"/></a>
 
 We also need to modify our articles page to display information about the user’s local profile, as well as the Facebook profile (home.html). While we haven’t linked up the routes to display the user’s information, try building one that looks like the below: 
 
-<img src=”http://i34.photobucket.com/albums/d147/Tong_Xiang/wiki-homeprofile_zpsd1f85b8a.png”>
+<a href="http://s34.photobucket.com/user/Tong_Xiang/media/wiki-homeprofile_zpsd1f85b8a.png.html" target="_blank"><img src="http://i34.photobucket.com/albums/d147/Tong_Xiang/wiki-homeprofile_zpsd1f85b8a.png" border="0" alt="homeProfile photo wiki-homeprofile_zpsd1f85b8a.png"/></a>
 
 Let’s also populate our local signup and local login pages. A local signup page could look like this: 
 
-<img src=”http://i34.photobucket.com/albums/d147/Tong_Xiang/wiki-signup_zpsf4dcfe78.png”>
+<a href="http://s34.photobucket.com/user/Tong_Xiang/media/wiki-signup_zpsf4dcfe78.png.html" target="_blank"><img src="http://i34.photobucket.com/albums/d147/Tong_Xiang/wiki-signup_zpsf4dcfe78.png" border="0" alt="signup photo wiki-signup_zpsf4dcfe78.png"/></a>
 
 And a local login page could look like this: 
 
-<img src=”http://i34.photobucket.com/albums/d147/Tong_Xiang/wiki-loginpage_zps8a417dac.png”>
+<a href="http://s34.photobucket.com/user/Tong_Xiang/media/wiki-loginpage_zps8a417dac.png.html" target="_blank"><img src="http://i34.photobucket.com/albums/d147/Tong_Xiang/wiki-loginpage_zps8a417dac.png" border="0" alt="Login photo wiki-loginpage_zps8a417dac.png"/></a>
 
 ###Mongoose Model : User 
 
