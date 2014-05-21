@@ -66,8 +66,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var routes = require('./routes/index').router;
-var home = require('./routes/home')
+var routes = require('./routes/index');
+var home = require('./routes/home');
 var users = require('./routes/users');
 var add_routes = require('./routes/add');
 var wiki_routes = require('./routes/wiki');
@@ -91,7 +91,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //required for passportJS
 
-app.use(session({ secret: 'ilovetong' })); // session secret, the salt used to encrypt the session ids which are stored in the client's browser. 
+app.use(session({ secret: 'tongiscool' })); // session secret, the salt used to encrypt the session ids which are stored in the client's browser. 
 app.use(passport.initialize()); //creates our passport object
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -171,7 +171,7 @@ Before understanding how authentication works, it’s important to first underst
 ####Session Cookies
 Session information is frequently stored in cookies so that the website you’re visiting can keep track of your movements from page to page, so you don’t get asked for the same information you’ve already given to the site. Session cookies allow you to proceed through different pages without having to authenticate each time you go to a new page. A common use case of session cookies: the shopping cart of an e-commerce site. As you navigate throughout the site, the site keeps track of who you are and how many items are in your cart within the session cookie stored in your browser. Citation [here](http://www.allaboutcookies.org/cookies/session-cookies-used-for.html).
 
-With `app.use(session({secret: ‘ilovetong’}))`, we’re either doing one of two things. We’re either creating a new session in express if this is the user’s first time using the app, or we’re checking to see the cookie returned from the client’s browser has a valid session id. If we create a new session, express-session generates a unique session ID for the user’s specific login visit, or “session”, to our site. We then encrypt this ID with the secret, and put the ID within the cookie which is stored in the client’s browser. The ID is encrypted with the secret--’ilovetong’--so that others can’t pretend to be this user on the site; the user has no idea what their session ID actually is. 
+With `app.use(session({secret: ‘tongiscool’}))`, we’re either doing one of two things. We’re either creating a new session in express if this is the user’s first time using the app, or we’re checking to see the cookie returned from the client’s browser has a valid session id. If we create a new session, express-session generates a unique session ID for the user’s specific login visit, or “session”, to our site. We then encrypt this ID with the secret, and put the ID within the cookie which is stored in the client’s browser. The ID is encrypted with the secret--’tongiscool’--so that others can’t pretend to be this user on the site; the user has no idea what their session ID actually is. 
 
 And then the cookie is sent with every request. Express will decode the cookie using the middleware stack (beginning with the cookie-parser). Because the session ID is also stored on the server side, express will use the secret to decode the hashed session ID in the cookie, and confirms (or authenticates) that the user is in fact the person who first created the original session ID. When this authentication happens, then express recalls all the session parameters from the database that we’ve stored, which are then sent back to the client. 
 
