@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  
+	<h1>Sign up</h1>
+  {% if message %}
+  <div>{{ message }}</div>
+  {% endif %}
+  <form action="/signup" method="post">
+  	<label>Email</label>
+  	<input type="text" name="email">
+  	<label>Password</label>
+  	<input type="password" name="password">
+  	<input type="submit" class="btn btn-warning" value="Sign up">
+  </form>
+  <div>
+  	<p>Already have an account?  <a href="/login">Log in</a></p>
+  	<p>Or go <a href="/home">home</a>.</p>
+  </div>
 {% endblock %}

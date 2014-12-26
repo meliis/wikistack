@@ -5,7 +5,43 @@
   {% if deleted %}
       <div class='alert alert-danger'>Aww Sookie. Page is deleted!</div>
   {% endif %}
-
+        <h1>Profile</h1>
+        <form action="/logout"><input type="submit" class="btn" value="Log out"></input></form>
+        {% if user.local.email %}
+          <h2>Local</h2>
+          <ul>
+            <li>id: what id though </li>
+            <li>email: {{user.local.email}} </li>
+            <li>password: this is NOT ACTUALLY ANYWHERE wow </li>
+          </ul>
+        {% endif %}
+        {% if user.facebook.email %}
+          <h2>Facebook</h2>
+          <ul>
+            <li>id: {{user.facebook.id}} </li>
+            <li>token: {{user.facebook.token}} </li>
+            <li>email: {{user.facebook.email}} </li>
+            <li>name: {{user.facebook.name}} </li>
+          </ul>
+        {% endif %}
+        {% if user.google.email %}
+          <h2>Google</h2>
+          <ul>
+            <li>id: {{user.google.id}} </li>
+            <li>token: {{user.google.token}} </li>
+            <li>email: {{user.google.email}} </li>
+            <li>name: {{user.google.name}} </li>
+          </ul>
+        {% endif %}
+        {% if user.twitter.email %}
+          <h2>Twitter</h2>
+          <ul>
+            <li>id: {{user.twitter.id}} </li>
+            <li>token: {{user.twitter.token}} </li>
+            <li>email: {{user.twitter.email}} </li>
+            <li>name: {{user.twitter.name}} </li>
+          </ul>
+        {% endif %}
   {% if docs.length > 0 %}
     <ul>
       {% for doc in docs %}

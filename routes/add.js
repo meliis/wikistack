@@ -2,7 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res) {
+var isLoggedIn = function(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect('/login');
+}
+
+router.get('/', isLoggedIn, function(req, res) {
   res.render('add');
 });
  

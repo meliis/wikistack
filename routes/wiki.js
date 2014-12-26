@@ -3,11 +3,17 @@ var router = express.Router();
 var models = require('../models/');
 
 /* GET users listing. */
-router.get('/', function(req, res) {
+var isLoggedIn = function(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect('/login');
+}
+
+router.get('/', isLoggedIn, function(req, res) {
+  console.log("is this being hit");
   res.render('add');
 });
  
-router.post('/submit', function(req, res) {
+router.post('/submit', isLoggedIn, function(req, res) {
   
   var title = req.body.title;
   var body = req.body.body;
@@ -30,11 +36,11 @@ router.post('/submit', function(req, res) {
  
   var p = new models.Page({ "title": title, "body":body, "url_name": url_name});
   p.save();
-  res.redirect('/');
+  res.redirect('/home');
   
 });
 
-router.get("/edit/:id", function(req,res) {
+router.get("/edit/:id", isLoggedIn, function(req,res) {
   var id = req.params.id;
 
   models.Page.findById(id,function(err, doc) {
@@ -55,7 +61,7 @@ router.post("/edit_submit/:id", function(req,res) {
   
 });
 
-router.get("/delete/:id", function(req,res) {
+router.get("/delete/:id", isLoggedIn, function(req,res) {
   var id = req.params.id;
   models.Page.findByIdAndRemove(id, function(err, data) {
     res.redirect("/?deleted=true");

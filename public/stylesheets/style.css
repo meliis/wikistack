@@ -7,6 +7,16 @@ a {
   color: #00B7FF;
 }
 
+.navbar-inverse {
+  background: #333;
+}
+
+.index-content {
+  padding: 20px;
+  background: #eee;
+  text-align: center;
+}
+
 #page_control_panel {
   float:right;
 }
@@ -30,3 +40,19 @@ a {
   font: normal 14px arial,sans-serif;
 }
 
+form {
+  padding: 15px 0;
+}
+
+label, input, button {
+  display: block;
+}
+
+label {
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+.btn {
+  margin-top: 10px;
+}
